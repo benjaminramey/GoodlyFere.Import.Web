@@ -18,7 +18,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoodlyFere.Import.Data.Enti
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Files", "Files", "{115972F2-F36D-4870-8527-0CE7972A6F0D}"
 	ProjectSection(SolutionItems) = preProject
-		..\GoodlyFere.Import\LICENSE.txt = ..\GoodlyFere.Import\LICENSE.txt
+		LICENSE.txt = LICENSE.txt
 		README.md = README.md
 	EndProjectSection
 EndProject
