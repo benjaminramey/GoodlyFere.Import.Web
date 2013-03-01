@@ -1,0 +1,44 @@
+﻿<script type="text/template" id="destinationform-view">
+<h2>Add a Destination</h2>
+<form>
+    @Html.Label("Name", new { @for = "name" })
+    @Html.TextBox("name", "{{name}}")<br />
+    @Html.Label("Type", new { @for = "type" })
+    @Html.DropDownList("type", new SelectListItem[0])
+    
+    <p>
+        <input type="submit" value="Submit"/>
+    </p>
+</form>
+
+</script>
+
+<script type="text/template" id="destinations-view">
+    <h2>Destinations</h2>
+    <a href="model/destination/new" id="newdestination-link">+ New Destination</a>
+    | <a href="#" class="refresh">Refresh</a>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+
+</script>
+
+<script type="text/template" id="destinationrow-view">
+    <td class='destination-name'>{{name}}</td>
+    <td class='destination-name'>{{type}}</td>
+    <td class='destination-actions'></td>
+</script>
+
+<script type="text/template" id="destinationactions-view">
+    <a href="model/destination/edit/{{id}}" class="edit-action">Edit</a> |
+    <a href="#" class="delete-action">Delete</a>
+</script>

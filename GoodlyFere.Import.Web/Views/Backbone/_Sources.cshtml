@@ -1,0 +1,44 @@
+﻿<script type="text/template" id="sourceform-view">
+<h2>Add a Source</h2>
+<form>
+    @Html.Label("Name", new { @for="name"})
+    @Html.TextBox("name", "{{name}}")<br />
+    @Html.Label("Type", new { @for="type"})
+    @Html.DropDownList("type", new SelectListItem[0])
+    
+    <p>
+        <input type="submit" value="Submit"/>
+    </p>
+</form>
+
+</script>
+
+<script type="text/template" id="sources-view">
+    <h2>Sources</h2>
+    <a href="model/source/new" id="newsource-link">+ New Source</a>
+    | <a href="#" class="refresh">Refresh</a>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+
+</script>
+
+<script type="text/template" id="sourcerow-view">
+    <td class='source-name'>{{name}}</td>
+    <td class='source-type'>{{type}}</td>
+    <td class='source-actions'></td>
+</script>
+
+<script type="text/template" id="sourceactions-view">
+    <a href="model/source/edit/{{id}}" class="edit-action">Edit</a> |
+    <a href="#" class="delete-action">Delete</a>
+</script>

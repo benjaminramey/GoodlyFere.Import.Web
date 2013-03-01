@@ -1,0 +1,48 @@
+﻿<script id="plugins-view" type="text/template">
+    <h2>Plugins</h2>
+    
+    <a href="model/plugin/new" id="newplugin-link">+ New plugin</a>
+    | <a href="#" class="refresh">Refresh</a>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Assembly Name</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+</script>
+
+<script id="pluginrow-view" type="text/template">
+    <tr data-id="{{id}}">
+        <td>{{name}}</td>
+        <td>{{assemblyPath}}</td>
+        <td>
+            <a href="#" class="reload-action">Reload</a> | 
+            <a href="model/plugin/edit/{{id}}" class="edit-action">Edit</a> |
+            <a href="#" class="delete-action">Delete</a>
+        </td>
+    </tr>
+</script>
+
+<script id="pluginform-view" type="text/template">
+    <h2>Add a new plugin</h2>
+    @using (Html.BeginForm("Upload", "Plugins", FormMethod.Post, new { enctype = "multipart/form-data", @class="dll-form" }))
+    {
+        <label for='dll'>DLL</label>
+        <input type='file' name='dll' id='dll' />
+        <input type='submit' value='Upload'/>
+        <br />
+        <span>Current: {{assemblyPath}}</span>
+    }
+    <form class='plugin-form'>
+        <label for='name'>Name</label> 
+        <input type='text' name='name' id='name' value='{{name}}' />    
+        <p>
+            <input type='submit' value='Submit' name='save' disabled='disabled'/>
+        </p>
+    </form>
+</script>

@@ -1,0 +1,16 @@
+﻿@model GoodlyFere.Import.Web.Models.InitialDataViewModel
+
+<script type="text/javascript">
+    window.Import = { _initialData: {} };
+    window.Import._initialData.projects = @Html.Raw(Model.ProjectsJson);
+</script>
+
+<div id="page"></div>
+
+@Html.Partial("../Backbone/_Main")
+@Html.Partial("../Backbone/_Projects")
+@Html.Partial("../Backbone/_Destinations")
+@Html.Partial("../Backbone/_Sources")
+@Html.Partial("../Backbone/_Converters")
+@Html.Partial("../Backbone/_Plugins")
+

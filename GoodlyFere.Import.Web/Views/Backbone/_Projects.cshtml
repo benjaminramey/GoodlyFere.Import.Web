@@ -1,0 +1,89 @@
+﻿<script type="text/template" id="projects-view">    
+    <h2>Projects</h2>
+    <a href="model/project/new" id="newproject-link">+ New Project</a>
+    | <a href="#" class="refresh">Refresh</a>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+</script>
+
+<script type="text/template" id="projectrow-view">
+    <td class='project-name'>{{name}}</td>
+    <td class='project-actions'></td>
+</script>
+
+<script type="text/template" id="projectactions-view">
+    <a href="project/run/{{id}}" class="run-action">Run</a> |
+    <a href="model/project/edit/{{id}}" class="edit-action">Edit</a> |
+    <a href="#" class="delete-action">Delete</a>
+</script>
+
+<script type="text/template" id="projectform-view">
+    <h2>Add a new project</h2>
+    <form>
+        <label for='name'>Name: </label>
+        <input type='text' name='name' id='name' value='{{name}}'/><br />
+
+        <label for='source'>Source: </label>
+        <select name='source' id='source'></select>
+        <a href="model/source/new">+ Add</a>
+        <br />
+
+        <label for='converter'>Converter: </label>
+        <select name='converter' id='converter'></select>
+        <a href="model/converter/new">+ Add</a>
+        <br />
+
+        <label for='destination'>Destination: </label>
+        <select name='destination' id='destination'></select>
+        <a href="model/destination/new">+ Add</a>
+        <br />
+
+        <p>
+            <input type='submit' value='Submit' />
+        </p>
+    </form>
+</script>
+
+<script type="text/template" id="projectrun-view">
+    <h2>Run project</h2>
+    <p>
+        <label>Saved run configurations</label>
+        <select id='saved-configs'>
+            <option></option>
+        </select>
+    </p>
+    <p>
+        <button id='save-current-config' disabled='disabled'>Save</button>
+        <button id='save-new-config'>Save as new configuration</button>
+        <button id='clear-params'>Clear all parameters</button>
+    </p>
+    <fieldset>
+        <legend>Source properties ({{sourceDefinition.name}})</legend>
+        <div id="source-params">
+        </div>
+    </fieldset>
+    <fieldset>
+        <legend>Converter properties ({{converterDefinition.name}})</legend>
+        <div id="converter-params">
+        </div>
+    </fieldset>
+    <fieldset>
+        <legend>Destination properties ({{destinationDefinition.name}})</legend>
+        <div id="destination-params">
+        </div>
+    </fieldset>
+
+    <button id="run-button">Run</button>
+</script>
+
+
+

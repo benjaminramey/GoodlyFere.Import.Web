@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{9B5540AA-EAF2-42F0-9658-343C05B4E300}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>GoodlyFere.Import.Data.EntityFramework</RootNamespace>
+    <AssemblyName>GoodlyFere.Import.Data.EntityFramework</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Common.Logging">
+      <HintPath>..\packages\Common.Logging.2.1.2\lib\net40\Common.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Migrations\201302260358007_AddPlugin.cs" />
+    <Compile Include="Migrations\201302260358007_AddPlugin.Designer.cs">
+      <DependentUpon>201302260358007_AddPlugin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201302272031499_ChangePluginDllToAssemblyName.cs" />
+    <Compile Include="Migrations\201302272031499_ChangePluginDllToAssemblyName.Designer.cs">
+      <DependentUpon>201302272031499_ChangePluginDllToAssemblyName.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201302272222282_ChangePluginAssemblyNameToAssemblyPath.cs" />
+    <Compile Include="Migrations\201302272222282_ChangePluginAssemblyNameToAssemblyPath.Designer.cs">
+      <DependentUpon>201302272222282_ChangePluginAssemblyNameToAssemblyPath.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Model\ConverterDefinition.cs" />
+    <Compile Include="Model\DestinationDefinition.cs" />
+    <Compile Include="Model\ModelBase.cs" />
+    <Compile Include="Model\ParameterInstance.cs" />
+    <Compile Include="Model\Plugin.cs" />
+    <Compile Include="Model\Project.cs" />
+    <Compile Include="Model\RunConfiguration.cs" />
+    <Compile Include="Model\SourceDefinition.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RepositoryHelper.cs" />
+    <Compile Include="Repository\GenericRepository.cs" />
+    <Compile Include="ImportEntities.cs" />
+    <Compile Include="Repository\ProjectRepository.cs" />
+    <Compile Include="Repository\RunConfigRepository.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GoodlyFere.Import.Data\GoodlyFere.Import.Data.csproj">
+      <Project>{20641DBD-13B3-49BE-B573-28B8C91B851C}</Project>
+      <Name>GoodlyFere.Import.Data</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201302260358007_AddPlugin.resx">
+      <DependentUpon>201302260358007_AddPlugin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201302272031499_ChangePluginDllToAssemblyName.resx">
+      <DependentUpon>201302272031499_ChangePluginDllToAssemblyName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201302272222282_ChangePluginAssemblyNameToAssemblyPath.resx">
+      <DependentUpon>201302272222282_ChangePluginAssemblyNameToAssemblyPath.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

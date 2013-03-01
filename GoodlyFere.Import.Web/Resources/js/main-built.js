@@ -1,0 +1,1 @@
+require(["jquery"],function(e){e(function(){})}),define("main",function(){});
