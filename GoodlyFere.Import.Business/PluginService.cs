@@ -79,6 +79,14 @@ namespace GoodlyFere.Import.Business
                     AssemblyName name = AssemblyName.GetAssemblyName(binLocation);
                     Assembly.Load(name);
                 }
+                catch (ReflectionTypeLoadException rtle)
+                {
+                    Log.ErrorFormat("Could not load plugin assembly.", rtle);
+                    foreach (var loaderEx in rtle.LoaderExceptions)
+                    {
+                        Log.ErrorFormat("Type load exception: {0}", loaderEx, loaderEx.Message);
+                    }
+                }
                 catch (Exception ex)
                 {
                     Log.ErrorFormat("Could not load plugin assembly.", ex);

@@ -3,6 +3,7 @@
 using System;
 using System.Linq;
 using System.Reflection;
+using Common.Logging;
 using GoodlyFere.Import.Data.Model;
 
 #endregion
@@ -14,6 +15,7 @@ namespace GoodlyFere.Import.Data.NonPersistent.Repository
     {
         #region Constants and Fields
 
+        private static readonly ILog Log = LogManager.GetLogger(typeof(TypeCacheRepository<,>));
         private static TAvailableType[] _cache;
 
         #endregion
@@ -48,15 +50,35 @@ namespace GoodlyFere.Import.Data.NonPersistent.Repository
 
         private TAvailableType[] GetCache()
         {
-            Assembly[] assemblies = AppDomain.CurrentDomain.GetAssemblies();
+            try
+            {
+                Assembly[] assemblies = AppDomain.CurrentDomain.GetAssemblies()
+                    .Where(a => a.FullName.StartsWith("GoodlyFere.Import")
+                                || a.GetReferencedAssemblies().Any(ra => ra.Name.StartsWith("GoodlyFere.Import")))
+                    .ToArray();
 
-            return assemblies.SelectMany(a => a.DefinedTypes)
-                             .Where(
-                                 t => typeof(TInterface).IsAssignableFrom(t)
-                                      && !t.IsInterface
-                                      && !t.IsAbstract)
-                             .Select(t => new TAvailableType { FullTypeName = t.AssemblyQualifiedName })
-                             .ToArray();
+                return assemblies.SelectMany(a => a.DefinedTypes)
+                                 .Where(
+                                     t => typeof(TInterface).IsAssignableFrom(t)
+                                          && !t.IsInterface
+                                          && !t.IsAbstract)
+                                 .Select(t => new TAvailableType { FullTypeName = t.AssemblyQualifiedName })
+                                 .ToArray();
+            }
+            catch (ReflectionTypeLoadException rtle)
+            {
+                Log.ErrorFormat("Could not load available types.", rtle);
+                foreach (var loaderEx in rtle.LoaderExceptions)
+                {
+                    Log.ErrorFormat("Type load exception: {0}", loaderEx, loaderEx.Message);
+                }
+            }
+            catch (Exception ex)
+            {
+                Log.ErrorFormat("Could not find available types.", ex);
+            }
+
+            return new TAvailableType[0];
         }
 
         #endregion
