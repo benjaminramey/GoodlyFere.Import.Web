@@ -114,6 +114,8 @@
 
                 var parameters = this.currentConfig.get("parameterInstances");
 
+                // BUG: doesn't account for new parameters not already
+                // in the config
                 if (parameters && parameters.length > 0) {
                     for (var k = 0; k < parameters.length; k++) {
                         var name = parameters[k].name;
@@ -171,6 +173,9 @@
                 var type = "source";
                 if ($(input).parents("#destination-params").length > 0) {
                     type = "destination";
+                }
+                else if ($(input).parents("#converter-params").length > 0) {
+                    type = "converter";
                 }
                 return {
                     name: $(input).attr("name"),
