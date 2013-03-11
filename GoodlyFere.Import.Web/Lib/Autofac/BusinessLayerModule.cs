@@ -2,10 +2,10 @@
 
 using System;
 using System.Linq;
+using System.Web;
 using Autofac;
 using GoodlyFere.Import.Business;
 using GoodlyFere.Import.Business.Interfaces;
-using GoodlyFere.Import.Data.Model;
 
 #endregion
 
@@ -19,7 +19,8 @@ namespace GoodlyFere.Import.Web.Lib.Autofac
         {
             builder.RegisterGeneric(typeof(GenericService<>)).As(typeof(IGenericService<>));
             builder.RegisterGeneric(typeof(ParametersService<>)).As(typeof(IParametersService<>));
-            builder.RegisterType<PluginService>().As<IPluginService>();
+            builder.RegisterType<PluginService>().As<IPluginService>()
+                .WithParameter("webSiteRoot", HttpContext.Current.Server.MapPath("~/"));
             builder.RegisterType<RunConfigurationService>().As<IRunConfigurationService>();
 
             base.Load(builder);

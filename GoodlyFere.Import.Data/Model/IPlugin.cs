@@ -11,7 +11,7 @@ namespace GoodlyFere.Import.Data.Model
     {
         #region Public Properties
 
-        string AssemblyPath { get; set; }
+        string PackagePath { get; set; }
         string Name { get; set; }
 
         #endregion

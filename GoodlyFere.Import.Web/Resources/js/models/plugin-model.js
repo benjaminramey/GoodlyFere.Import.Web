@@ -1,7 +1,7 @@
 ﻿define(['backbone', 'app'], function (Backbone, app) {
     return Backbone.Model.extend({
         defaults: {
-            "assemblyPath": "",
+            "packagePath": "",
             "name": ""
         },
 

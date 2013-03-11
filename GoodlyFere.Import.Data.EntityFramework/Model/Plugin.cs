@@ -14,7 +14,7 @@ namespace GoodlyFere.Import.Data.EntityFramework.Model
         #region Public Properties
 
         [Required]
-        public string AssemblyPath { get; set; }
+        public string PackagePath { get; set; }
 
         [Required]
         public string Name { get; set; }

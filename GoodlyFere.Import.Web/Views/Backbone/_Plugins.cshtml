@@ -19,7 +19,7 @@
 <script id="pluginrow-view" type="text/template">
     <tr data-id="{{id}}">
         <td>{{name}}</td>
-        <td>{{assemblyPath}}</td>
+        <td>{{packagePath}}</td>
         <td>
             <a href="#" class="reload-action">Reload</a> | 
             <a href="model/plugin/edit/{{id}}" class="edit-action">Edit</a> |
@@ -30,13 +30,13 @@
 
 <script id="pluginform-view" type="text/template">
     <h2>Add a new plugin</h2>
-    @using (Html.BeginForm("Upload", "Plugins", FormMethod.Post, new { enctype = "multipart/form-data", @class="dll-form" }))
+    @using (Html.BeginForm("Upload", "Plugins", FormMethod.Post, new { enctype = "multipart/form-data", @class="pluginpackage-form" }))
     {
-        <label for='dll'>DLL</label>
-        <input type='file' name='dll' id='dll' />
+        <label for='pluginPackage'>Plugin package</label>
+        <input type='file' name='pluginPackage' id='pluginPackage' />
         <input type='submit' value='Upload'/>
         <br />
-        <span>Current: {{assemblyPath}}</span>
+        <span>Current: {{packagePath}}</span>
     }
     <form class='plugin-form'>
         <label for='name'>Name</label> 

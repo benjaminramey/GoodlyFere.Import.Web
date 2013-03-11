@@ -63,6 +63,10 @@
     <Compile Include="Migrations\201302272222282_ChangePluginAssemblyNameToAssemblyPath.Designer.cs">
       <DependentUpon>201302272222282_ChangePluginAssemblyNameToAssemblyPath.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201303111756035_ChangePluginAssemblyPathToPackagePath.cs" />
+    <Compile Include="Migrations\201303111756035_ChangePluginAssemblyPathToPackagePath.Designer.cs">
+      <DependentUpon>201303111756035_ChangePluginAssemblyPathToPackagePath.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\ConverterDefinition.cs" />
     <Compile Include="Model\DestinationDefinition.cs" />
@@ -100,6 +104,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201302272222282_ChangePluginAssemblyNameToAssemblyPath.resx">
       <DependentUpon>201302272222282_ChangePluginAssemblyNameToAssemblyPath.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201303111756035_ChangePluginAssemblyPathToPackagePath.resx">
+      <DependentUpon>201303111756035_ChangePluginAssemblyPathToPackagePath.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

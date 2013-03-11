@@ -18,12 +18,12 @@
                 this.$el.html(this.template(this.model.toJSON()));
 
                 var view = this;
-                this.$("form.dll-form").ajaxForm(function (result) {
-                    view.model.set({ assemblyPath: result });
+                this.$("form.pluginpackage-form").ajaxForm(function (result) {
+                    view.model.set({ packagePath: result });
                     view.enableSave();
                 });
                 
-                if (this.model.get("assemblyPath") != "") {
+                if (this.model.get("PackagePath") != "") {
                     this.enableSave();
                 }
 
