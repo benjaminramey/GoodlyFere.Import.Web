@@ -2,7 +2,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -46,16 +45,11 @@ namespace GoodlyFere.Import.Business
             }
             base.Delete(entitiesToDelete);
         }
-
-        public void LoadAll()
-        {
-            var plugins = GetAll();
-            //LoadAssemblies(plugins);
-        }
-
+        
         public bool Reload(IPlugin plugin)
         {
-            //LoadAssemblies(plugin);
+            RemovePlugin(plugin);
+            InstallPlugin(plugin);
             return true;
         }
 
@@ -63,10 +57,7 @@ namespace GoodlyFere.Import.Business
         {
             foreach (IPlugin plugin in newEntities)
             {
-                string folder = UnpackPlugin(plugin);
-                string oldWebConfigName = TransformWebConfig(folder);
-                CopyFiles(folder, oldWebConfigName);
-                //LoadAssemblies(newEntities);
+                InstallPlugin(plugin);
             }
 
             return base.Save(newEntities);
@@ -150,6 +141,13 @@ namespace GoodlyFere.Import.Business
             }
         }
 
+        private void InstallPlugin(IPlugin plugin)
+        {
+            string folder = UnpackPlugin(plugin);
+            string oldWebConfigName = TransformWebConfig(folder);
+            CopyFiles(folder, oldWebConfigName);
+        }
+
         private void LoadAssemblies(IPlugin plugin)
         {
             try
@@ -195,7 +193,7 @@ namespace GoodlyFere.Import.Business
                     }
                     else if (File.Exists(line))
                     {
-                        File.Delete(line);   
+                        File.Delete(line);
                     }
                 }
             }

@@ -11,9 +11,7 @@ namespace GoodlyFere.Import.Business.Interfaces
     public interface IPluginService : IGenericService<IPlugin>
     {
         #region Public Methods
-
-        void LoadAll();
-
+        
         bool Reload(IPlugin plugin);
 
         #endregion

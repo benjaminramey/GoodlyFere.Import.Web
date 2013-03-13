@@ -17,17 +17,15 @@ namespace GoodlyFere.Import.Web.Controllers
     {
         #region Constants and Fields
 
-        private readonly IPluginService _pluginService;
         private readonly IGenericService<IProject> _projectService;
 
         #endregion
 
         #region Constructors and Destructors
 
-        public HomeController(IGenericService<IProject> projectService, IPluginService pluginService)
+        public HomeController(IGenericService<IProject> projectService)
         {
             _projectService = projectService;
-            _pluginService = pluginService;
         }
 
         #endregion
@@ -36,8 +34,6 @@ namespace GoodlyFere.Import.Web.Controllers
 
         public ActionResult Index()
         {
-            _pluginService.LoadAll();
-
             var model = new InitialDataViewModel { Projects = _projectService.GetAll() };
             model.ProjectsJson = JsonConvert.SerializeObject(
                 model.Projects,
