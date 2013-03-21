@@ -1,6 +1,7 @@
 ﻿<script type="text/template" id="projects-view">    
     <h2>Projects</h2>
-    <a href="model/project/new" id="newproject-link">+ New Project</a>
+    <a href="project/seriesrun" id="newproject-link">Run Project Series</a>
+    | <a href="model/project/new" id="newproject-link">+ New Project</a>
     | <a href="#" class="refresh">Refresh</a>
 
     <table>
@@ -21,8 +22,8 @@
 </script>
 
 <script type="text/template" id="projectactions-view">
-    <a href="project/run/{{id}}" class="run-action">Run</a> |
-    <a href="model/project/edit/{{id}}" class="edit-action">Edit</a> |
+    <a href="project/{{id}}/run" class="run-action">Run</a> |
+    <a href="model/project/{{id}}/edit" class="edit-action">Edit</a> |
     <a href="#" class="delete-action">Delete</a>
 </script>
 
@@ -83,6 +84,22 @@
     </fieldset>
 
     <button id="run-button">Run</button>
+</script>
+
+<script type="text/template" id="projectseriesrun-view">    
+    <h2>Run series project</h2>
+    <div id="run-steps">
+    </div>
+    <button id='add-step-btn'>Add step</button>
+    <button id='run-steps-btn'>Run Series</button>
+</script>
+
+<script type="text/template" id ="projectseriesrun-step-view">
+    <div class='step'>
+        Configuration:
+        <select class='step-configs'>
+        </select>
+    </div>
 </script>
 
 

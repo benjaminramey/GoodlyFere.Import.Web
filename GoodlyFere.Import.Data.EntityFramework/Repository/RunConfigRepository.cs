@@ -17,7 +17,8 @@ namespace GoodlyFere.Import.Data.EntityFramework.Repository
         protected override IQueryable<RunConfiguration> GetQueryable(ImportEntities context)
         {
             return context.RunConfigurations
-                          .Include(p => p.ParameterInstances);
+                          .Include(p => p.ParameterInstances)
+                          .Include(p => p.Project);
         }
 
         #endregion

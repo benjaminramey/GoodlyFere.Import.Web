@@ -2,8 +2,9 @@
     return Backbone.Model.extend({
         urlRoot: "/api/runconfigurations",
 
-        run: function () {
-            $.ajax({
+        run: function (options) {
+            options = options || {};
+            options = $.extend({
                 method: "RUN",
                 url: this.urlRoot,
                 data: JSON.stringify(this.toJSON()),
@@ -16,7 +17,9 @@
                 error: function() {
                     app.showError("Project run failed.");
                 }
-            });
+            }, options);
+
+            $.ajax(options);
         }
     });
 });

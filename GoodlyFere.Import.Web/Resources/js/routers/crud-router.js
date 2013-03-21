@@ -20,7 +20,7 @@
         return Backbone.Router.extend({
             routes: {
                 "model/:type/list": "list",
-                "model/:type/edit/:id": "newOrEditModel",
+                "model/:type/:id/edit": "newOrEditModel",
                 "model/:type/new": "newOrEditModel"
             },
 

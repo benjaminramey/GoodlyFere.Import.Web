@@ -198,6 +198,7 @@
     <Content Include="Resources\js\views\pluginform-view.js" />
     <Content Include="Resources\js\views\plugins-view.js" />
     <Content Include="Resources\js\views\projectrun-view.js" />
+    <Content Include="Resources\js\views\projectseriesrun-view.js" />
     <Content Include="Resources\js\views\sources-view.js" />
     <Content Include="Resources\js\views\sourceactions-view.js" />
     <Content Include="Resources\js\views\destinationactions-view.js" />
