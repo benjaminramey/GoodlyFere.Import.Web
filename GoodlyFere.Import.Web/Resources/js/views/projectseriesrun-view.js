@@ -1,6 +1,6 @@
-﻿define(['jquery', 'backbone', 'data',
+﻿define(['jquery', 'backbone', 'app', 'data',
         'models/run-configuration-collection'],
-    function ($, Backbone, Data, RunConfigCollection) {
+    function ($, Backbone, app, Data, RunConfigCollection) {
         return Backbone.View.extend({
             tagName: 'div',
             className: 'project-seriesrun',
@@ -32,6 +32,7 @@
             runSeries: function (e) {
                 e.preventDefault();
 
+                app.showInfo("Starting project run series");
                 var configIds = this.$('.step-configs').map(function() {
                     return $(this).val();
                 });
@@ -47,6 +48,8 @@
                         idx++;
                         if (idx < configIds.length) {
                             view.runConfig(configIds, idx);
+                        } else {
+                            app.showSuccess("Project run series complete.");
                         }
                     }
                 });

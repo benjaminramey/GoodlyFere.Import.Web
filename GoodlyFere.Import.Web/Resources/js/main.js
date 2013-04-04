@@ -32,7 +32,14 @@ require(["jquery", "backbone", "routers/main-router", 'routers/crud-router', 'ap
             app.showInfo("Starting " + settings.type + ": " + settings.url);
         });
         $(document).ajaxError(function (event, jqxhr, settings) {
-            app.showError("Completed " + settings.type + " with error: " + settings.url);
+            var responseJson = $.parseJSON(jqxhr.responseText);
+            var errMsg = responseJson.message;
+            var exception = responseJson.exceptionMessage;
+            app.showError(
+                "Completed " + settings.type
+                    + " with error: " + settings.url
+                    + "<br />" + errMsg
+                    + "<br />" + exception);
         });
         $(document).ajaxSuccess(function (event, jqxhr, settings) {
             app.showSuccess("Completed " + settings.type + ": " + settings.url);
