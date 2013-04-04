@@ -57,6 +57,7 @@ namespace GoodlyFere.Import.Web.Controllers.API
         public virtual T Post([FromBody] T entity)
         {
             entity = Service.Save(new[] { entity }).FirstOrDefault();
+            entity = Service.GetById(entity.Id);
             return entity;
         }
 

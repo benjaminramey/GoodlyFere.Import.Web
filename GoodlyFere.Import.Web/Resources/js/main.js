@@ -28,6 +28,16 @@ require(["jquery", "backbone", "routers/main-router", 'routers/crud-router', 'ap
         app.router = new MainRouter();
         app.crudRouter = new CrudRouter();
 
+        $(document).ajaxSend(function(event, jqxhr, settings) {
+            app.showInfo("Starting " + settings.type + ": " + settings.url);
+        });
+        $(document).ajaxError(function (event, jqxhr, settings) {
+            app.showError("Completed " + settings.type + " with error: " + settings.url);
+        });
+        $(document).ajaxSuccess(function (event, jqxhr, settings) {
+            app.showSuccess("Completed " + settings.type + ": " + settings.url);
+        });
+
         $("body").on("click", "a", function (e) {
             e.preventDefault();
             

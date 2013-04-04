@@ -1,0 +1,26 @@
+﻿#messages {
+    position: absolute;
+    top: 0;
+    right: 10px;
+    height: 200px;
+    width: 300px;
+    border-width: 0 1px 1px;
+    border-style: solid;
+    border-color: lightgrey;
+    padding: 5px;
+    overflow: auto;
+}
+#messages div {
+    white-space: nowrap;
+    padding: 2px;
+    border-bottom: 1px dashed lightgrey;
+}
+#messages div.error {
+    color: darkred;
+}
+#messages div.info {
+    color: grey;
+}
+#messages div.success {
+    color: green;
+}

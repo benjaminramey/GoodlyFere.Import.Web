@@ -165,6 +165,7 @@
     <Content Include="App_Readme\Elmah.SqlServer.txt" />
     <Content Include="App_Readme\Elmah.txt" />
     <Content Include="Global.asax" />
+    <Content Include="Resources\css\app.css" />
     <Content Include="Resources\images\ajax-loader.gif" />
     <Content Include="Resources\js\app.js" />
     <Content Include="Resources\js\data.js" />
@@ -271,6 +272,7 @@
     <Content Include="Views\Backbone\_Plugins.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Properties\PublishProfiles\Local Mac.pubxml" />
     <None Include="Properties\PublishProfiles\Local.pubxml" />
   </ItemGroup>
   <PropertyGroup>
