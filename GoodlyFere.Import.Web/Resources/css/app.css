@@ -1,15 +1,13 @@
 ﻿#messages {
-    position: absolute;
-    top: 0;
-    right: 10px;
     height: 600px;
     width: 400px;
-    border-width: 0 1px 1px;
+    border-width: 1px 0 1px 1px;
     border-style: solid;
     border-color: lightgrey;
     overflow: auto;
     background-color: white;
     z-index: 1000;
+    float: right;
 }
 #messages div {
     padding: 5px;
