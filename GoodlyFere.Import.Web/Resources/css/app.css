@@ -22,3 +22,8 @@
 #messages div.success {
     color: green;
 }
+
+div#loading {
+    position: absolute;
+    right: 420px;
+}

@@ -30,6 +30,7 @@ require(["jquery", "backbone", "routers/main-router", 'routers/crud-router', 'ap
 
         $(document).ajaxSend(function(event, jqxhr, settings) {
             app.showInfo("Starting " + settings.type + ": " + settings.url);
+            app.showLoader();
         });
         $(document).ajaxError(function (event, jqxhr, settings) {
             var responseJson = $.parseJSON(jqxhr.responseText);
@@ -40,9 +41,11 @@ require(["jquery", "backbone", "routers/main-router", 'routers/crud-router', 'ap
                     + " with error: " + settings.url
                     + "<br />" + errMsg
                     + "<br />" + exception);
+            app.hideLoader();
         });
         $(document).ajaxSuccess(function (event, jqxhr, settings) {
             app.showSuccess("Completed " + settings.type + ": " + settings.url);
+            app.hideLoader();
         });
 
         $("body").on("click", "a", function (e) {
